@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d2fygxsy8doha"]
+
+[ext_resource type="Script" uid="uid://bt5v4mh304ly0" path="res://addons/3d controller/addons/3d_controls_toolkit/ThirdPersonControler3D.gd" id="1_02n2h"]
+[ext_resource type="Script" uid="uid://b0evvpq7hy0al" path="res://addons/3d controller/examples/example_player.gd" id="1_6bcbl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wb3s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_02n2h"]
+
+[node name="Jugador" type="CharacterBody3D" unique_id=2045006274]
+script = ExtResource("1_6bcbl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1117931686]
+shape = SubResource("CapsuleShape3D_8wb3s")
+
+[node name="ThirdPersonControler3D" type="Node3D" parent="." unique_id=1069212998]
+script = ExtResource("1_02n2h")
+Active = false
+Jump_Time_To_Descend = 0.38
+Wall_Jump = true
+Wall_Jump_Diagonal = true
+Wall_Hang = true
+Wall_Slide = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=945695840]
+mesh = SubResource("CapsuleMesh_02n2h")
