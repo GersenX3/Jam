@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ShakerPreset2D" load_steps=10 format=3 uid="uid://b05igixtaulux"]
+
+[ext_resource type="Script" uid="uid://blft42xvgsg36" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="1_cxi03"]
+[ext_resource type="Script" uid="uid://bbm83bo0gn8eo" path="res://addons/shaker/data/Vector2/ShakerTypeNoiseShake2D.gd" id="2_yv33j"]
+[ext_resource type="Script" uid="uid://del8spmhduoxc" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="3_wsl32"]
+[ext_resource type="Script" uid="uid://c3jwkr1a0qt63" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="4_soxrn"]
+[ext_resource type="Script" uid="uid://c7vosnla4gw0d" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="4_yv33j"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wd80m"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qch26"]
+noise = SubResource("FastNoiseLite_wd80m")
+
+[sub_resource type="Resource" id="Resource_dk63d"]
+script = ExtResource("2_yv33j")
+noise_texture = SubResource("NoiseTexture2D_qch26")
+metadata/_custom_type_script = "uid://bbm83bo0gn8eo"
+
+[sub_resource type="Resource" id="Resource_wsl32"]
+script = ExtResource("4_yv33j")
+metadata/_custom_type_script = "uid://c7vosnla4gw0d"
+
+[resource]
+script = ExtResource("4_soxrn")
+PositionShake = Array[ExtResource("1_cxi03")]([SubResource("Resource_dk63d")])
+ScaleShake = Array[ExtResource("1_cxi03")]([SubResource("Resource_wsl32")])
+__follow_timeline = true
+metadata/_custom_type_script = "uid://c3jwkr1a0qt63"

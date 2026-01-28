@@ -1,0 +1,37 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Jogo"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://caru6ec37p4xu"
+
+[autoload]
+
+EventBus="*uid://dmyhm7h322h7q"
+GameManager="*uid://cama4j4i6p2w2"
+MusicManager="*uid://djasevt4fpxpc"
+CamaraShake="*uid://drfdn4hh1yirt"
+EffectManager="*uid://c74hcyyhq1tlt"
+Shaker="*uid://c3e8k3j8lqfu3"
+
+[physics]
+
+2d/physics_engine="Rapier2D"
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
