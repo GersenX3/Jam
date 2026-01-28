@@ -6,7 +6,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Jugador":
 		nodo_desbloqueable.visible = true
 		nodo_destruible.queue_free()
-		
+
 		# Activar colisiones en todos los nodos con CollisionShape3D/CollisionPolygon3D
 		activar_colisiones_recursivamente(nodo_desbloqueable)
 

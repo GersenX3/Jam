@@ -10,7 +10,7 @@ extends Node
 
 # Referencia al controlador del personaje para poder acceder a sus variables (como `velocity`) y nodos (como `PlayerSprite`).
 # La asignaremos automáticamente.
-@export var character: CharacterBody2D
+@export var character: CharacterBody3D
 @export var state_machine: StateMachine
 
 # ==============================================================================

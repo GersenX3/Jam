@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dtpgnj8l67dpx"]
+
+[ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_eq04u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rite1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6nxss"]
+
+[node name="enemy_base" type="CharacterBody3D" unique_id=1881701868]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1762590835 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_eq04u")
+initial_state = NodePath("Hurt")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1184203525]
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=859493923]
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1020152222]
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=801885750]
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1774546304]
+
+[node name="Muerte" type="Node" parent="StateMachine" unique_id=308958623]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1294397870]
+shape = SubResource("CapsuleShape3D_rite1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=719019904]
+mesh = SubResource("CapsuleMesh_6nxss")

@@ -1,28 +1,29 @@
 extends CharacterBody3D
 
-#@onready var first_person_controler_3d: FirstPersonControler3D = $FirstPersonControler3D
 @onready var third_person_controler_3d: ThirdPersonControler3D = $ThirdPersonControler3D
-#@onready var side_scrolling_controler_3d: SideScrollingControler3D = $SideScrollingControler3D
-#@onready var top_down_controler_3d: TopDownControler3D = $TopDownControler3D
+@onready var state_machine: StateMachine = $StateMachine
+@onready var muerte: Node = $StateMachine/Muerte
+@onready var hurt: Node = $StateMachine/Hurt
 
 func _ready() -> void:
+	EventBus.subscribe("Muerte", _trigger_death, false)
 	add_to_group("jugador")
 	third_person_controler_3d.toggle_active(true)
 
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventKey:		
-		#if (event as InputEventKey).keycode == KEY_1:
-			#disable_all()
-			#first_person_controler_3d.toggle_active(true)
-		#elif (event as InputEventKey).keycode == KEY_2:
-			#disable_all()
-			#third_person_controler_3d.toggle_active(true)
-		#elif (event as InputEventKey).keycode == KEY_3:
-			#disable_all()
-			#side_scrolling_controler_3d.toggle_active(true)		
-		#elif (event as InputEventKey).keycode == KEY_4:
-			#disable_all()
-			#top_down_controler_3d.toggle_active(true)
+func _trigger_hazard(args):
+	EventBus.emit("cambio_vida", 1)
+
+func _trigger_death(args):
+	"""
+	Llamado por hazards o cuando la vida llega a 0
+	"""
+	if has_node("StateMachine"):
+		var state_machine = get_node("StateMachine")
+		
+		# Verificar que no esté ya en estado de muerte
+		if state_machine.current_state != muerte and muerte:
+			state_machine.transition_to(muerte)
+
 			
 func disable_all():
 	rotation = Vector3.ZERO

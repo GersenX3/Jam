@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bevd1fbikb8h2"]
+
+[ext_resource type="Script" uid="uid://d4bcnyw46vc17" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[node name="Control" type="Control" unique_id=957934679]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ahhtf")
+
+[node name="Label" type="Label" parent="." unique_id=1050019917]
+layout_mode = 0
+offset_right = 483.0
+offset_bottom = 317.0
+theme_override_font_sizes/font_size = 50
+text = "Texot"

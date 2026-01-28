@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cfnslme6366b6"]
+
+[ext_resource type="Script" uid="uid://b4u1027lrdlac" path="res://scripts/enemigos/gato.gd" id="1_6nxss"]
+[ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_txoou"]
+[ext_resource type="Script" uid="uid://dcmkrahywb1dc" path="res://scripts/hazard.gd" id="3_mnwqe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rite1"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mnwqe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yqx1"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qxm2p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxm2p"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="enemy_base" type="CharacterBody3D" unique_id=1881701868]
+script = ExtResource("1_6nxss")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1762590835 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_txoou")
+initial_state = NodePath("Hurt")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1184203525]
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=859493923]
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1020152222]
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=801885750]
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1774546304]
+
+[node name="Muerte" type="Node" parent="StateMachine" unique_id=308958623]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1294397870]
+shape = SubResource("CapsuleShape3D_rite1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=719019904]
+mesh = SubResource("CylinderMesh_mnwqe")
+
+[node name="Hazard" type="Area3D" parent="." unique_id=529596575]
+visible = false
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_mnwqe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hazard" unique_id=179304001]
+shape = SubResource("BoxShape3D_6yqx1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hazard" unique_id=1514930770]
+mesh = SubResource("BoxMesh_qxm2p")
+surface_material_override/0 = SubResource("StandardMaterial3D_qxm2p")
+
+[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered"]

@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d2fygxsy8doha" path="res://scenes/jugador/jugador.tscn" id="1_vfqw4"]
 [ext_resource type="Script" uid="uid://e5krokqw52cm" path="res://scripts/mascaras/fragmento_mascara.gd" id="2_wpcwy"]
+[ext_resource type="PackedScene" uid="uid://bj1c5hjo5odac" path="res://scenes/enemigos/hazard.tscn" id="3_mulrk"]
+[ext_resource type="PackedScene" uid="uid://cfnslme6366b6" path="res://scenes/enemigos/gato.tscn" id="4_na3d4"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sp83l"]
 
@@ -449,6 +451,12 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ObjetosFragmento4/Plataforms/Plat6/StaticBody3D" unique_id=1860248446]
 shape = SubResource("ConcavePolygonShape3D_cg6xh")
+
+[node name="Hazard" parent="." unique_id=529596575 instance=ExtResource("3_mulrk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53667754, 2.4128625)
+
+[node name="enemy_base" parent="." unique_id=1881701868 instance=ExtResource("4_na3d4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.542929, 1.2467889, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Area3D2" to="Area3D2" method="_on_body_entered"]

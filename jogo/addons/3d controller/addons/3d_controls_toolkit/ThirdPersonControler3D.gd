@@ -34,6 +34,8 @@ func _ready() -> void:
 			if child is MeshInstance3D:
 				Geometry = child
 				continue
+	var hud = preload("res://scenes/hud.tscn").instantiate()
+	camera.add_child(hud)
 	update()
 	toggle_active(Active)
 	

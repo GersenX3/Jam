@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://bt5v4mh304ly0" path="res://addons/3d controller/addons/3d_controls_toolkit/ThirdPersonControler3D.gd" id="1_02n2h"]
 [ext_resource type="Script" uid="uid://b0evvpq7hy0al" path="res://addons/3d controller/examples/example_player.gd" id="1_6bcbl"]
+[ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="3_ueyq7"]
+[ext_resource type="Script" uid="uid://bexsnnkqxs2l6" path="res://scripts/jugador/hurt.gd" id="4_1d7gi"]
+[ext_resource type="Script" uid="uid://c6o7io0f0bjmb" path="res://scripts/jugador/idle.gd" id="4_ku1a3"]
+[ext_resource type="Script" uid="uid://cjx4wh8v3ofdb" path="res://scripts/jugador/walk.gd" id="5_linge"]
+[ext_resource type="Script" uid="uid://bcs5swy5h1akm" path="res://scripts/jugador/jump.gd" id="6_qckqa"]
+[ext_resource type="Script" uid="uid://c0mcp5aawv7cv" path="res://scripts/jugador/fall.gd" id="7_linge"]
+[ext_resource type="Script" uid="uid://baiqt21qx50vd" path="res://scripts/jugador/muerte.gd" id="9_qckqa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8wb3s"]
 
@@ -24,3 +31,25 @@ Wall_Slide = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=945695840]
 mesh = SubResource("CapsuleMesh_02n2h")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1731329768 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_ueyq7")
+initial_state = NodePath("Hurt")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1285410904]
+script = ExtResource("4_ku1a3")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=264629821]
+script = ExtResource("5_linge")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=17767812]
+script = ExtResource("6_qckqa")
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=1473199969]
+script = ExtResource("7_linge")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1671174044]
+script = ExtResource("4_1d7gi")
+
+[node name="Muerte" type="Node" parent="StateMachine" unique_id=1294842504]
+script = ExtResource("9_qckqa")

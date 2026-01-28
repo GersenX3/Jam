@@ -85,7 +85,6 @@ dash={
 [physics]
 
 2d/physics_engine="Rapier2D"
-3d/physics_engine="Rapier3D"
 rapier/solver/preset=2
 rapier/solver/num_internal_stabilization_iterations=2
 
