@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cn25nn82b1xes"]
+
+[ext_resource type="PackedScene" uid="uid://qtll1wnn7eye" path="res://scenes/area_daño.tscn" id="1_c8fcr"]
+[ext_resource type="Script" uid="uid://dd38glhs65gxe" path="res://scripts/projectile.gd" id="1_q3m7n"]
+
+[node name="Projectile" type="Node2D" unique_id=814604913]
+script = ExtResource("1_q3m7n")
+
+[node name="AreaDaño" parent="." unique_id=757344349 instance=ExtResource("1_c8fcr")]
+collision_mask = 2

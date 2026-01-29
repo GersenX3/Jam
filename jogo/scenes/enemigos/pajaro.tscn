@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_q8kgu"]
 [ext_resource type="Script" uid="uid://bkqxg8bqeidir" path="res://scripts/enemies/pajaro/pajaro.gd" id="1_sf5m7"]
+[ext_resource type="PackedScene" uid="uid://cn25nn82b1xes" path="res://scenes/projectile.tscn" id="2_3y5x3"]
 [ext_resource type="Texture2D" uid="uid://vrkol5mtsky3" path="res://assets/sprites/miselaneos/pavo_sheet.png" id="2_q8kgu"]
 [ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_4jwd3"]
+[ext_resource type="Script" uid="uid://bptmcdiebop1s" path="res://scripts/enemies/pajaro/idle.gd" id="3_ymrdb"]
+[ext_resource type="Script" uid="uid://b4eid4wxvlnlt" path="res://scripts/enemies/pajaro/aiming.gd" id="4_ymrdb"]
+[ext_resource type="Script" uid="uid://bklywpo7ewlah" path="res://scripts/enemies/pajaro/shooting.gd" id="5_u5lr0"]
+[ext_resource type="Script" uid="uid://cy80ip8ugc425" path="res://scripts/enemies/pajaro/cooldown.gd" id="6_1tkld"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sf5m7"]
 atlas = ExtResource("2_q8kgu")
@@ -32,21 +37,38 @@ gradient = SubResource("Gradient_rcl5l")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y5x3"]
 size = Vector2(12, 16)
 
-[node name="Pajaro" type="CharacterBody2D" unique_id=1538421180]
-script = ExtResource("1_sf5m7")
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tkld"]
+radius = 60.0
 
-[node name="StateMachine" type="Node" parent="." unique_id=2140318818]
+[node name="Pajaro" type="CharacterBody2D" unique_id=1538421180]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_sf5m7")
+projectile_scene = ExtResource("2_3y5x3")
+
+[node name="StateMachine" type="Node" parent="." unique_id=2140318818 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_q8kgu")
+initial_state = NodePath("Idle")
 debug = true
 metadata/_custom_type_script = "uid://rhcrrevrdn0u"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=1304849919]
+script = ExtResource("3_ymrdb")
 
-[node name="Aiming" type="Node" parent="StateMachine" unique_id=675132164]
+[node name="Aiming" type="Node" parent="StateMachine" unique_id=675132164 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("4_ymrdb")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
-[node name="Shooting" type="Node" parent="StateMachine" unique_id=1234146713]
+[node name="Shooting" type="Node" parent="StateMachine" unique_id=1234146713 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("5_u5lr0")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
-[node name="Cooldown" type="Node" parent="StateMachine" unique_id=2085927092]
+[node name="Cooldown" type="Node" parent="StateMachine" unique_id=2085927092 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("6_1tkld")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1893675883]
 sprite_frames = SubResource("SpriteFrames_ymrdb")
@@ -57,6 +79,8 @@ shape = SubResource("RectangleShape2D_u5lr0")
 
 [node name="AreaDaño" type="Area2D" parent="." unique_id=308398080]
 position = Vector2(0, 11)
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("3_4jwd3")
 
 [node name="Sprite2D" type="Sprite2D" parent="AreaDaño" unique_id=1239509796]
@@ -68,5 +92,12 @@ texture = SubResource("GradientTexture2D_1tkld")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=2087038667]
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_3y5x3")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1534216651]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=809521289]
+shape = SubResource("CircleShape2D_1tkld")
 
 [connection signal="body_entered" from="AreaDaño" to="AreaDaño" method="_on_body_entered"]
