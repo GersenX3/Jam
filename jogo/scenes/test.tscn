@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://w4pxaa6n0pia" path="res://scenes/area_vida.tscn" id="6_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://dtpgnj8l67dpx" path="res://scenes/enemigos/pajaro.tscn" id="7_at5dv"]
 [ext_resource type="PackedScene" uid="uid://d2c2u152b0iqn" path="res://scenes/enemigos/conejo.tscn" id="8_jcd4p"]
+[ext_resource type="PackedScene" uid="uid://dwxebappl5o2j" path="res://scenes/enemigos/gato.tscn" id="9_uacia"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ij1v8"]
 
@@ -72,7 +73,7 @@ sources/0 = SubResource("TileSetAtlasSource_j5jx5")
 scale = Vector2(6, 6)
 
 [node name="Jugador" parent="." unique_id=307045768 instance=ExtResource("1_errlg")]
-position = Vector2(181.33334, -121.333336)
+position = Vector2(553.3334, -132)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=419909628]
 collision_mask = 0
@@ -328,3 +329,6 @@ position = Vector2(297.33334, -144.00002)
 
 [node name="Conejo" parent="Enemies" unique_id=420172597 instance=ExtResource("8_jcd4p")]
 position = Vector2(170.66667, -13.333334)
+
+[node name="Gato" parent="Enemies" unique_id=1806925153 instance=ExtResource("9_uacia")]
+position = Vector2(514.6667, -30.666668)
