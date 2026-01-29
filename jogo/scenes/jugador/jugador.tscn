@@ -43,6 +43,7 @@ shape = SubResource("RectangleShape2D_8wb3s")
 [node name="StateMachine" type="Node" parent="." unique_id=562417086 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_6bcbl")
 initial_state = NodePath("Idle")
+debug = true
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=947146032 node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "hurt_state", "wall_jump_state", "character", "state_machine")]
 script = ExtResource("4_1d7gi")
