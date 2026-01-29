@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b26tyke5b2ajl"]
 
 [ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_0ys58"]
+[ext_resource type="Script" uid="uid://cbxte7dv3602o" path="res://scripts/enemies/buho/buho.gd" id="1_a744m"]
 [ext_resource type="Texture2D" uid="uid://cjmwhgmcflqu8" path="res://assets/sprites/miselaneos/dibujos.png" id="2_0ys58"]
 [ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_ihbn3"]
 
@@ -32,6 +33,7 @@ gradient = SubResource("Gradient_khup8")
 size = Vector2(12, 19)
 
 [node name="Buho" type="CharacterBody2D" unique_id=1588957888]
+script = ExtResource("1_a744m")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1871116374]
 script = ExtResource("1_0ys58")

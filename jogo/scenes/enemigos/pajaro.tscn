@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dtpgnj8l67dpx"]
 
 [ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_q8kgu"]
+[ext_resource type="Script" uid="uid://bkqxg8bqeidir" path="res://scripts/enemies/pajaro/pajaro.gd" id="1_sf5m7"]
 [ext_resource type="Texture2D" uid="uid://vrkol5mtsky3" path="res://assets/sprites/miselaneos/pavo_sheet.png" id="2_q8kgu"]
 [ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_4jwd3"]
 
@@ -32,6 +33,7 @@ gradient = SubResource("Gradient_rcl5l")
 size = Vector2(12, 16)
 
 [node name="Pajaro" type="CharacterBody2D" unique_id=1538421180]
+script = ExtResource("1_sf5m7")
 
 [node name="StateMachine" type="Node" parent="." unique_id=2140318818]
 script = ExtResource("1_q8kgu")
