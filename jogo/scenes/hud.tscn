@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bevd1fbikb8h2"]
+
+[ext_resource type="Script" uid="uid://dsdhi3x0a38m5" path="res://scripts/hud.gd" id="1_ahhtf"]
+
+[node name="Hud" type="CanvasLayer" unique_id=416811106]
+script = ExtResource("1_ahhtf")
+
+[node name="Control" type="Control" parent="." unique_id=1652151426]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelVida" type="Label" parent="Control" unique_id=81371490]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(6, 6)
+text = "Vida"

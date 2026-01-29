@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://w4pxaa6n0pia"]
+
+[ext_resource type="Script" uid="uid://dly6aj4avu6v4" path="res://scripts/area_vida.gd" id="1_250ck"]
+
+[sub_resource type="Gradient" id="Gradient_250ck"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nxcd7"]
+gradient = SubResource("Gradient_250ck")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ihkh"]
+
+[node name="Areavida" type="Area2D" unique_id=757344349]
+script = ExtResource("1_250ck")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=806485658]
+position = Vector2(9.536743e-07, -9.536743e-07)
+scale = Vector2(0.31249997, 0.3125)
+texture = SubResource("GradientTexture2D_nxcd7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2081228121]
+shape = SubResource("RectangleShape2D_6ihkh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

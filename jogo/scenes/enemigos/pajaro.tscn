@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dtpgnj8l67dpx"]
+
+[ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_q8kgu"]
+[ext_resource type="Texture2D" uid="uid://vrkol5mtsky3" path="res://assets/sprites/miselaneos/pavo_sheet.png" id="2_q8kgu"]
+[ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_4jwd3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf5m7"]
+atlas = ExtResource("2_q8kgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ymrdb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf5m7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5lr0"]
+size = Vector2(10, 15)
+
+[sub_resource type="Gradient" id="Gradient_rcl5l"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1tkld"]
+gradient = SubResource("Gradient_rcl5l")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y5x3"]
+size = Vector2(12, 16)
+
+[node name="Pajaro" type="CharacterBody2D" unique_id=1538421180]
+
+[node name="StateMachine" type="Node" parent="." unique_id=2140318818]
+script = ExtResource("1_q8kgu")
+debug = true
+metadata/_custom_type_script = "uid://rhcrrevrdn0u"
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1304849919]
+
+[node name="Aiming" type="Node" parent="StateMachine" unique_id=675132164]
+
+[node name="Shooting" type="Node" parent="StateMachine" unique_id=1234146713]
+
+[node name="Cooldown" type="Node" parent="StateMachine" unique_id=2085927092]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1893675883]
+sprite_frames = SubResource("SpriteFrames_ymrdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1658823054]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_u5lr0")
+
+[node name="AreaDaño" type="Area2D" parent="." unique_id=308398080]
+position = Vector2(0, 11)
+script = ExtResource("3_4jwd3")
+
+[node name="Sprite2D" type="Sprite2D" parent="AreaDaño" unique_id=1239509796]
+visible = false
+position = Vector2(9.536743e-07, -9.536743e-07)
+scale = Vector2(0.31249997, 0.31249997)
+texture = SubResource("GradientTexture2D_1tkld")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=2087038667]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_3y5x3")
+
+[connection signal="body_entered" from="AreaDaño" to="AreaDaño" method="_on_body_entered"]

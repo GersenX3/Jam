@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://b26tyke5b2ajl"]
+
+[ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_0ys58"]
+[ext_resource type="Texture2D" uid="uid://cjmwhgmcflqu8" path="res://assets/sprites/miselaneos/dibujos.png" id="2_0ys58"]
+[ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_ihbn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a744m"]
+atlas = ExtResource("2_0ys58")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fo3ww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a744m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56thj"]
+size = Vector2(10, 18)
+
+[sub_resource type="Gradient" id="Gradient_khup8"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pcgmd"]
+gradient = SubResource("Gradient_khup8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0t0tg"]
+size = Vector2(12, 19)
+
+[node name="Buho" type="CharacterBody2D" unique_id=1588957888]
+
+[node name="StateMachine" type="Node" parent="." unique_id=1871116374]
+script = ExtResource("1_0ys58")
+debug = true
+metadata/_custom_type_script = "uid://rhcrrevrdn0u"
+
+[node name="Node" type="Node" parent="StateMachine" unique_id=712812212]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=877703464]
+sprite_frames = SubResource("SpriteFrames_fo3ww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1533323624]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_56thj")
+
+[node name="AreaDaño" type="Area2D" parent="." unique_id=1792556919]
+position = Vector2(0, 11)
+script = ExtResource("3_ihbn3")
+
+[node name="Sprite2D" type="Sprite2D" parent="AreaDaño" unique_id=717848020]
+visible = false
+position = Vector2(9.536743e-07, -9.536743e-07)
+scale = Vector2(0.31249997, 0.31249997)
+texture = SubResource("GradientTexture2D_pcgmd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=437526758]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_0t0tg")
+
+[connection signal="body_entered" from="AreaDaño" to="AreaDaño" method="_on_body_entered"]

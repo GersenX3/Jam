@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
+var LIFE = 100
+
 
 # Timer para evitar que se vuelva a pegar a la pared inmediatamente después de wall jump
 var wall_jump_cooldown: float = 0.0
@@ -32,3 +34,21 @@ func _process(delta: float) -> void:
 	# Decrementar el timer de jump buffer
 	if jump_buffer_counter > 0:
 		jump_buffer_counter -= delta
+
+func hazard():
+	LIFE = LIFE - 40
+	#mostrar daño jugador
+	EventBus.emit("cambio_vida", LIFE)
+	if LIFE <= 0:
+		_trigger_death()
+
+func vida():
+	LIFE = LIFE + 10
+	#mostrar daño jugador
+	EventBus.emit("cambio_vida", LIFE)
+	if LIFE >= 200:
+		_trigger_death()
+
+func _trigger_death():
+	get_tree().reload_current_scene()
+	pass

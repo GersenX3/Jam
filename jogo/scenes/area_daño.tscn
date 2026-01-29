@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://qtll1wnn7eye"]
+
+[ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="1_rcl5l"]
+
+[sub_resource type="Gradient" id="Gradient_rcl5l"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x5qnl"]
+gradient = SubResource("Gradient_rcl5l")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ihkh"]
+
+[node name="AreaDaño" type="Area2D" unique_id=757344349]
+script = ExtResource("1_rcl5l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1705994890]
+position = Vector2(9.536743e-07, -9.536743e-07)
+scale = Vector2(0.31249997, 0.31249997)
+texture = SubResource("GradientTexture2D_x5qnl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2081228121]
+shape = SubResource("RectangleShape2D_6ihkh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

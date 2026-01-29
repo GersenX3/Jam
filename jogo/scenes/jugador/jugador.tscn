@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://d0co27qgva7ld" path="res://scripts/jugador/jump.gd" id="7_ku1a3"]
 [ext_resource type="Script" uid="uid://dpqb34mlc18ss" path="res://scripts/jugador/hurt.gd" id="8_linge"]
 [ext_resource type="Script" uid="uid://p60dqg884kux" path="res://scripts/jugador/wall_jump.gd" id="9_qckqa"]
+[ext_resource type="PackedScene" uid="uid://bevd1fbikb8h2" path="res://scenes/hud.tscn" id="10_id218"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6bcbl"]
 atlas = ExtResource("1_02n2h")
@@ -119,3 +120,5 @@ limit_bottom = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_horizontal_offset = 0.5
+
+[node name="Hud" parent="Camera2D" unique_id=1045021881 instance=ExtResource("10_id218")]
