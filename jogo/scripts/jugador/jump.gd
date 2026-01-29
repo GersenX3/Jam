@@ -32,9 +32,10 @@ func process_physics(delta: float) -> State:
 	if character.velocity.y > 0:
 		return fall_state
 	
+	
 	# Permitir movimiento horizontal en el aire
 	var direction = Input.get_axis("left", "right")
-	if direction != 0:
+	if direction != 0 and !(character.timer_wall_jump > 0):
 		character.velocity.x = direction * character.SPEED
 		# Voltear el sprite según la dirección
 		if character.anim:

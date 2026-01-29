@@ -16,6 +16,17 @@ const WALL_JUMP_VELOCITY = -700.0
 const WALL_JUMP_PUSH = 400.0
 
 func enter():
+	character.timer_wall_jump = 3
+	
+	var wall_normal = character.get_wall_normal()
+		# Aplicar impulso vertical
+	character.velocity.y = WALL_JUMP_VELOCITY
+		# Aplicar impulso horizontal alejándose de la pared
+	character.velocity.x = wall_normal.x * WALL_JUMP_PUSH
+	
+	if character.anim:
+		character.anim.flip_h = wall_normal.x < 0
+	
 	# Reproducir animación de wall slide
 	if character.anim:
 		character.anim.play("wall_jump")
@@ -24,16 +35,15 @@ func process_input(event: InputEvent) -> State:
 	# Si presiona jump, saltar desde la pared
 	if event.is_action_pressed("jump"):
 		# Determinar la dirección de la pared
-		var wall_normal = character.get_wall_normal()
 		
-		# Aplicar impulso vertical
-		character.velocity.y = WALL_JUMP_VELOCITY
-		# Aplicar impulso horizontal alejándose de la pared
-		character.velocity.x = wall_normal.x * WALL_JUMP_PUSH
+		
+
 		
 		# Voltear el sprite en la dirección del salto
-		if character.anim:
-			character.anim.flip_h = wall_normal.x < 0
+		
+		
+		# Establecer el tiempo de bloqueo de control (0.3 segundos sin control)
+		character.set("wall_jump_lock_time", 0.3)
 		
 		return jump_state
 	

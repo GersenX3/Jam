@@ -1,0 +1,284 @@
+[gd_scene format=3 uid="uid://cxuoi5rmwaaql"]
+
+[ext_resource type="PackedScene" uid="uid://d2fygxsy8doha" path="res://scenes/jugador/jugador.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://dlxuk02e8488y" path="res://scenes/Fragmento.tscn" id="2_bl13t"]
+[ext_resource type="PackedScene" uid="uid://c1q1r8oxr1r3r" path="res://scenes/PostProcesado.tscn" id="3_iyx0m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ij1v8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bl13t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl13t"]
+size = Vector2(10.666668, 10.666668)
+
+[sub_resource type="Gradient" id="Gradient_bl13t"]
+offsets = PackedFloat32Array(0.6807229, 0.9939759)
+colors = PackedColorArray(0.6117647, 0.16470589, 0.4392157, 1, 0.6117647, 0.16470589, 0.4392157, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iyx0m"]
+gradient = SubResource("Gradient_bl13t")
+
+[sub_resource type="Gradient" id="Gradient_iyx0m"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_74lek"]
+gradient = SubResource("Gradient_iyx0m")
+
+[sub_resource type="Gradient" id="Gradient_74lek"]
+colors = PackedColorArray(0.7411765, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j5jx5"]
+gradient = SubResource("Gradient_74lek")
+
+[sub_resource type="Gradient" id="Gradient_j5jx5"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.35686275, 0.18039216, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lpvoh"]
+gradient = SubResource("Gradient_j5jx5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyx0m"]
+size = Vector2(10.666668, 149.33334)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iyx0m"]
+
+[node name="Test" type="Node2D" unique_id=201626268]
+scale = Vector2(6, 6)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=419909628]
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_ij1v8")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=450989267]
+shape = SubResource("WorldBoundaryShape2D_bl13t")
+
+[node name="Jugador" parent="." unique_id=307045768 instance=ExtResource("1_errlg")]
+position = Vector2(-8, -120)
+
+[node name="Fragmento1" type="Node2D" parent="." unique_id=1687343930]
+visible = false
+position = Vector2(-192, -196)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fragmento1" unique_id=1609060533]
+position = Vector2(64, 161.33334)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento1/StaticBody2D" unique_id=364023186]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento1/StaticBody2D" unique_id=1519473000]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_iyx0m")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Fragmento1" unique_id=1780719940]
+position = Vector2(64, 172)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento1/StaticBody2D2" unique_id=1373565294]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento1/StaticBody2D2" unique_id=88435422]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_iyx0m")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Fragmento1" unique_id=1234002249]
+position = Vector2(80, 172)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento1/StaticBody2D3" unique_id=418241198]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento1/StaticBody2D3" unique_id=185096883]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_iyx0m")
+metadata/_edit_lock_ = true
+
+[node name="Fragmento2" type="Node2D" parent="." unique_id=1864595741]
+visible = false
+position = Vector2(-408, -198.66667)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fragmento2" unique_id=464974524]
+position = Vector2(192, 173.33334)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento2/StaticBody2D" unique_id=1285749167]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento2/StaticBody2D" unique_id=2121972113]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_74lek")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Fragmento2" unique_id=276028647]
+position = Vector2(192, 162.66667)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento2/StaticBody2D2" unique_id=1695679251]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento2/StaticBody2D2" unique_id=4766755]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_74lek")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Fragmento2" unique_id=132425337]
+position = Vector2(192, 153.33334)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento2/StaticBody2D3" unique_id=1497918280]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento2/StaticBody2D3" unique_id=981431452]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_74lek")
+metadata/_edit_lock_ = true
+
+[node name="Fragmento3" type="Node2D" parent="." unique_id=2108473709]
+visible = false
+position = Vector2(129.33334, -206.66667)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fragmento3" unique_id=2001180531]
+position = Vector2(276, 162.66667)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento3/StaticBody2D" unique_id=828100571]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento3/StaticBody2D" unique_id=1412426560]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_j5jx5")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Fragmento3" unique_id=1936623943]
+position = Vector2(257.33334, 173.33334)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento3/StaticBody2D2" unique_id=1917738941]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento3/StaticBody2D2" unique_id=454550490]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_j5jx5")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Fragmento3" unique_id=814430919]
+position = Vector2(297.33334, 174.66667)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento3/StaticBody2D3" unique_id=2082874930]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento3/StaticBody2D3" unique_id=537641475]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_j5jx5")
+metadata/_edit_lock_ = true
+
+[node name="Fragmento4" type="Node2D" parent="." unique_id=766488383]
+visible = false
+position = Vector2(253.33334, -188)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Fragmento4" unique_id=895971750]
+position = Vector2(21.333328, 170.66667)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento4/StaticBody2D" unique_id=1683895801]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento4/StaticBody2D" unique_id=676597216]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_lpvoh")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Fragmento4" unique_id=1250441791]
+position = Vector2(21.333334, 158.66667)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento4/StaticBody2D2" unique_id=938940119]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento4/StaticBody2D2" unique_id=319370673]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_lpvoh")
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Fragmento4" unique_id=912930360]
+position = Vector2(21.333334, 146.66667)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragmento4/StaticBody2D3" unique_id=763252152]
+shape = SubResource("RectangleShape2D_bl13t")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Fragmento4/StaticBody2D3" unique_id=530740322]
+scale = Vector2(0.16666667, 0.16666667)
+texture = SubResource("GradientTexture2D_lpvoh")
+metadata/_edit_lock_ = true
+
+[node name="Desbloqueables" type="Node2D" parent="." unique_id=1397981848]
+position = Vector2(-12, -168)
+
+[node name="Fragmento1" parent="Desbloqueables" unique_id=135955704 node_paths=PackedStringArray("nodo_desbloqueable", "nodo_destruible") instance=ExtResource("2_bl13t")]
+position = Vector2(-76, 119.99999)
+nodo_desbloqueable = NodePath("../../Fragmento1")
+nodo_destruible = NodePath(".")
+
+[node name="Fragmento2" parent="Desbloqueables" unique_id=320099149 node_paths=PackedStringArray("nodo_desbloqueable", "nodo_destruible") instance=ExtResource("2_bl13t")]
+position = Vector2(-241.33334, 145.33333)
+nodo_desbloqueable = NodePath("../../Fragmento2")
+nodo_destruible = NodePath(".")
+
+[node name="Fragmento3" parent="Desbloqueables" unique_id=38990819 node_paths=PackedStringArray("nodo_desbloqueable", "nodo_destruible") instance=ExtResource("2_bl13t")]
+position = Vector2(358.6667, 150.66667)
+nodo_desbloqueable = NodePath("../../Fragmento3")
+nodo_destruible = NodePath(".")
+
+[node name="Fragmento4" parent="Desbloqueables" unique_id=1758425041 node_paths=PackedStringArray("nodo_desbloqueable", "nodo_destruible") instance=ExtResource("2_bl13t")]
+position = Vector2(241.33334, 150.66667)
+nodo_desbloqueable = NodePath("../../Fragmento4")
+nodo_destruible = NodePath(".")
+
+[node name="PostProcesado" parent="." unique_id=1384551174 instance=ExtResource("3_iyx0m")]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=992695607]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1419242875]
+position = Vector2(74.666664, -96.000015)
+shape = SubResource("RectangleShape2D_iyx0m")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1961887974]
+position = Vector2(74.666664, -96.000015)
+scale = Vector2(0.020833332, 0.29166663)
+texture = SubResource("NoiseTexture2D_iyx0m")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1090604775]
+position = Vector2(118.666664, -94.66668)
+shape = SubResource("RectangleShape2D_iyx0m")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D2" unique_id=350385643]
+position = Vector2(118.666664, -94.66668)
+scale = Vector2(0.020833332, 0.29166663)
+texture = SubResource("NoiseTexture2D_iyx0m")

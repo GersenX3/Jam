@@ -9,6 +9,7 @@ extends State
 @export var wall_jump_state: State
 
 func enter():
+	character.timer_wall_jump = 0
 	# Reproducir animación de idle
 	if character.anim:
 		character.anim.play("idle")

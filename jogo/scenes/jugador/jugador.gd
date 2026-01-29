@@ -4,9 +4,18 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
+# Variable para el bloqueo de control del wall jump (opcional pero recomendado)
+var wall_jump_lock_time: float = 0.0
+var timer_wall_jump: float = 0
 
 func _ready() -> void:
 	add_to_group("player")
+
+func _process(delta: float) -> void:
+	if timer_wall_jump > 0:
+		timer_wall_jump -= delta
+	print($StateMachine.current_state)
+	print(timer_wall_jump)
 
 #func _physics_process(delta: float) -> void:
 	## Add the gravity.
