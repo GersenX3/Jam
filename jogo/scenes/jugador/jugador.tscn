@@ -10,9 +10,6 @@
 [ext_resource type="Script" uid="uid://dpqb34mlc18ss" path="res://scripts/jugador/hurt.gd" id="8_linge"]
 [ext_resource type="Script" uid="uid://p60dqg884kux" path="res://scripts/jugador/wall_jump.gd" id="9_qckqa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wb3s"]
-size = Vector2(16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_6bcbl"]
 atlas = ExtResource("1_02n2h")
 region = Rect2(0, 0, 16, 16)
@@ -28,16 +25,20 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wb3s"]
+size = Vector2(10, 14)
+
 [node name="Jugador" type="CharacterBody2D" unique_id=307045768]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_ueyq7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=553627817]
-shape = SubResource("RectangleShape2D_8wb3s")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2057181353]
 sprite_frames = SubResource("SpriteFrames_ueyq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=553627817]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_8wb3s")
 
 [node name="StateMachine" type="Node" parent="." unique_id=562417086 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_6bcbl")

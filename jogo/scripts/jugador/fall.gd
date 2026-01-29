@@ -18,7 +18,8 @@ func process_input(event: InputEvent) -> State:
 
 func process_physics(delta: float) -> State:
 	# Si toca una pared y está presionando hacia ella, cambiar a wall_jump
-	if character.is_on_wall():
+	# PERO SOLO SI EL COOLDOWN HA TERMINADO
+	if character.is_on_wall() and character.wall_jump_cooldown <= 0:
 		var direction = Input.get_axis("left", "right")
 		var wall_normal = character.get_wall_normal()
 		# Verificar si está presionando hacia la pared
@@ -33,15 +34,15 @@ func process_physics(delta: float) -> State:
 		else:
 			return idle_state
 	
-	# Permitir movimiento horizontal en el aire
+	# Permitir movimiento horizontal en el aire SOLO SI el cooldown ha terminado
 	var direction = Input.get_axis("left", "right")
-	if direction != 0:
+	if direction != 0 and character.wall_jump_cooldown <= 0:
 		character.velocity.x = direction * character.SPEED
 		# Voltear el sprite según la dirección
 		if character.anim:
 			character.anim.flip_h = direction < 0
 	else:
-		# Reducir velocidad horizontal gradualmente si no hay input
+		# Si hay cooldown activo o no hay input, reducir velocidad gradualmente
 		character.velocity.x = move_toward(character.velocity.x, 0, character.SPEED * delta * 2)
 	
 	# Aplicar gravedad
