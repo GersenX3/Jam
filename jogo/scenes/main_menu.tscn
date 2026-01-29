@@ -1,5 +1,38 @@
 [gd_scene format=3 uid="uid://oir7g0rmjo1o"]
 
+[ext_resource type="Texture2D" uid="uid://cn1eqgonv33ui" path="res://assets/sprites/logo.png" id="1_l6cm7"]
+[ext_resource type="PackedScene" uid="uid://c1q1r8oxr1r3r" path="res://scenes/PostProcesado.tscn" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://csqngfba07rc6" path="res://assets/sprites/01_menu/caroline_sleeping.png" id="3_bqqt6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu84c"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekxnf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu84c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ln24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtw2f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="MainMenu" type="Control" unique_id=2016233086]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +40,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1142263613]
+position = Vector2(960, 540)
+texture = ExtResource("1_l6cm7")
+
+[node name="Empezar" type="Button" parent="." unique_id=893384775]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = -255.0
+offset_right = 228.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Empezar"
+
+[node name="Salir" type="Button" parent="." unique_id=1521642231]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -228.0
+offset_top = -179.0
+offset_right = 228.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Salir"
+
+[node name="PostProcesado" parent="." unique_id=1384551174 instance=ExtResource("2_ekxnf")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1445203355]
+position = Vector2(772, 325)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_ekxnf")
+autoplay = "default"
+frame_progress = 0.6394847

@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://d2fygxsy8doha"]
+
+[ext_resource type="Texture2D" uid="uid://cln1ft322ckuf" path="res://assets/sprites/placeholder.png" id="1_02n2h"]
+[ext_resource type="Script" uid="uid://8i6gk13g8u02" path="res://scenes/jugador/jugador.gd" id="1_ueyq7"]
+[ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="2_6bcbl"]
+[ext_resource type="Script" uid="uid://ccx316ajr1n3g" path="res://scripts/jugador/idle.gd" id="4_1d7gi"]
+[ext_resource type="Script" uid="uid://dlm0sad1x5gru" path="res://scripts/jugador/walk.gd" id="5_6htac"]
+[ext_resource type="Script" uid="uid://bwkmw71g6bchb" path="res://scripts/jugador/fall.gd" id="6_ku1a3"]
+[ext_resource type="Script" uid="uid://d0co27qgva7ld" path="res://scripts/jugador/jump.gd" id="7_ku1a3"]
+[ext_resource type="Script" uid="uid://dpqb34mlc18ss" path="res://scripts/jugador/hurt.gd" id="8_linge"]
+[ext_resource type="Script" uid="uid://p60dqg884kux" path="res://scripts/jugador/wall_jump.gd" id="9_qckqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wb3s"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bcbl"]
+atlas = ExtResource("1_02n2h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ueyq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bcbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Jugador" type="CharacterBody2D" unique_id=307045768]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_ueyq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=553627817]
+shape = SubResource("RectangleShape2D_8wb3s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2057181353]
+sprite_frames = SubResource("SpriteFrames_ueyq7")
+
+[node name="StateMachine" type="Node" parent="." unique_id=562417086 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_6bcbl")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=947146032 node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "hurt_state", "wall_jump_state", "character", "state_machine")]
+script = ExtResource("4_1d7gi")
+idle_state = NodePath(".")
+walk_state = NodePath("../Walk")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+hurt_state = NodePath("../Hurt")
+wall_jump_state = NodePath("../WallJump")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=206359789 node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "hurt_state", "wall_jump_state", "character", "state_machine")]
+script = ExtResource("5_6htac")
+idle_state = NodePath("../Idle")
+walk_state = NodePath(".")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+hurt_state = NodePath("../Hurt")
+wall_jump_state = NodePath("../WallJump")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=843905609 node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "hurt_state", "wall_jump_state", "character", "state_machine")]
+script = ExtResource("6_ku1a3")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+fall_state = NodePath(".")
+jump_state = NodePath("../Jump")
+hurt_state = NodePath("../Hurt")
+wall_jump_state = NodePath("../WallJump")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1699325328 node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "hurt_state", "wall_jump_state", "character", "state_machine")]
+script = ExtResource("7_ku1a3")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+fall_state = NodePath("../Fall")
+jump_state = NodePath(".")
+hurt_state = NodePath("../Hurt")
+wall_jump_state = NodePath("../WallJump")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=2145506891 node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "hurt_state", "wall_jump_state", "character", "state_machine")]
+script = ExtResource("8_linge")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+hurt_state = NodePath(".")
+wall_jump_state = NodePath("../WallJump")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="WallJump" type="Node" parent="StateMachine" unique_id=854660540 node_paths=PackedStringArray("idle_state", "walk_state", "fall_state", "jump_state", "hurt_state", "wall_jump_state", "character", "state_machine")]
+script = ExtResource("9_qckqa")
+idle_state = NodePath("../Idle")
+walk_state = NodePath("../Walk")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+hurt_state = NodePath("../Hurt")
+wall_jump_state = NodePath(".")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1005911776]
+limit_top = -1080
+limit_bottom = 0
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_horizontal_offset = 0.5

@@ -50,7 +50,7 @@ enum GameMode {
 }
 
 # Rutas de escenas principales - PERSONALIZAR SEGÚN TU PROYECTO
-const MAIN_MENU_SCENE = "res://scenes/ui/main_menu.tscn"
+const MAIN_MENU_SCENE = "res://scenes/main_menu.tscn"
 const LEVEL_SELECT_SCENE = "res://scenes/ui/level_select.tscn"
 const OPTIONS_SCENE = "res://scenes/ui/options_menu.tscn"
 const PAUSE_MENU_SCENE = "res://scenes/ui/pause_menu.tscn"

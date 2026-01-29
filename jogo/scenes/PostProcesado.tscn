@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c1q1r8oxr1r3r"]
+
+[ext_resource type="Shader" uid="uid://bcc2pudlt3wik" path="res://scripts/shaders/crt.gdshader" id="1_tcucj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e325h"]
+shader = ExtResource("1_tcucj")
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 2.000000569999999
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.0
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.3
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.0
+shader_parameter/roll_line_amount = 0.450000021375
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="PostProcesado" type="CanvasLayer" unique_id=1384551174]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=130707961]
+material = SubResource("ShaderMaterial_e325h")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
