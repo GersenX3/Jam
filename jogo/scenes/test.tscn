@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qtll1wnn7eye" path="res://scenes/area_daño.tscn" id="5_j5jx5"]
 [ext_resource type="PackedScene" uid="uid://w4pxaa6n0pia" path="res://scenes/area_vida.tscn" id="6_lpvoh"]
 [ext_resource type="PackedScene" uid="uid://dtpgnj8l67dpx" path="res://scenes/enemigos/pajaro.tscn" id="7_at5dv"]
+[ext_resource type="PackedScene" uid="uid://d2c2u152b0iqn" path="res://scenes/enemigos/conejo.tscn" id="8_jcd4p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ij1v8"]
 
@@ -324,3 +325,6 @@ position = Vector2(42.666668, -10.666667)
 
 [node name="Pajaro" parent="Enemies" unique_id=1538421180 instance=ExtResource("7_at5dv")]
 position = Vector2(297.33334, -144.00002)
+
+[node name="Conejo" parent="Enemies" unique_id=420172597 instance=ExtResource("8_jcd4p")]
+position = Vector2(170.66667, -13.333334)

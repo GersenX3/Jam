@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
 var LIFE = 100
-
+var last_move
 
 # Timer para evitar que se vuelva a pegar a la pared inmediatamente después de wall jump
 var wall_jump_cooldown: float = 0.0
@@ -23,6 +23,7 @@ func _ready() -> void:
 	add_to_group("player")
 
 func _process(delta: float) -> void:
+	last_move = sign(Input.get_axis("left", "right")) if Input.get_axis("left", "right") != 0 else last_move
 	# Decrementar el timer de cooldown del wall jump
 	if wall_jump_cooldown > 0:
 		wall_jump_cooldown -= delta

@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://pbwuwfjuneo8" path="res://scripts/enemies/conejo/conejo.gd" id="1_mxgbe"]
 [ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_tsu3j"]
 [ext_resource type="Texture2D" uid="uid://cjmwhgmcflqu8" path="res://assets/sprites/miselaneos/dibujos.png" id="2_tsu3j"]
+[ext_resource type="Script" uid="uid://dcpu3abpvwxjw" path="res://scripts/enemies/conejo/idle.gd" id="3_32o2u"]
 [ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_bfc7y"]
+[ext_resource type="Script" uid="uid://dwr7va5v4fvsi" path="res://scripts/enemies/conejo/hidden.gd" id="4_32o2u"]
+[ext_resource type="Script" uid="uid://doxys7aooi68i" path="res://scripts/enemies/conejo/stalking.gd" id="5_bulk4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mxgbe"]
 atlas = ExtResource("2_tsu3j")
@@ -32,19 +35,33 @@ gradient = SubResource("Gradient_e8wud")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gudp"]
 size = Vector2(12, 21)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bulk4"]
+radius = 48.0
+
 [node name="Conejo" type="CharacterBody2D" unique_id=420172597]
 script = ExtResource("1_mxgbe")
+detection_range = 50.0
 
-[node name="StateMachine" type="Node" parent="." unique_id=1154120560]
+[node name="StateMachine" type="Node" parent="." unique_id=1154120560 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_tsu3j")
+initial_state = NodePath("Idle")
 debug = true
 metadata/_custom_type_script = "uid://rhcrrevrdn0u"
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=789657150]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=789657150 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("3_32o2u")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
-[node name="Hidden" type="Node" parent="StateMachine" unique_id=1392529595]
+[node name="Hidden" type="Node" parent="StateMachine" unique_id=1392529595 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("4_32o2u")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
-[node name="Stalking" type="Node" parent="StateMachine" unique_id=333207733]
+[node name="Stalking" type="Node" parent="StateMachine" unique_id=333207733 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("5_bulk4")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1264808125]
 sprite_frames = SubResource("SpriteFrames_32o2u")
@@ -55,6 +72,8 @@ shape = SubResource("RectangleShape2D_bulk4")
 
 [node name="AreaDaño" type="Area2D" parent="." unique_id=473127755]
 position = Vector2(0, 11)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("3_bfc7y")
 
 [node name="Sprite2D" type="Sprite2D" parent="AreaDaño" unique_id=2143048015]
@@ -66,5 +85,10 @@ texture = SubResource("GradientTexture2D_bnnia")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=331929128]
 position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_5gudp")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1834153281]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=799472531]
+shape = SubResource("CircleShape2D_bulk4")
 
 [connection signal="body_entered" from="AreaDaño" to="AreaDaño" method="_on_body_entered"]
