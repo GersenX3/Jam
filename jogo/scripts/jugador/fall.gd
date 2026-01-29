@@ -46,7 +46,7 @@ func process_physics(delta: float) -> State:
 		character.velocity.x = move_toward(character.velocity.x, 0, character.SPEED * delta * 2)
 	
 	# Aplicar gravedad
-	character.velocity.y += character.get_gravity().y * delta
+	character.velocity.y += character.get_gravity().y * delta * 1.5
 	
 	character.move_and_slide()
 	return null
