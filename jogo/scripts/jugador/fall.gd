@@ -14,6 +14,14 @@ func enter():
 		character.anim.play("fall")
 
 func process_input(event: InputEvent) -> State:
+	# JUMP BUFFER: Registrar que el jugador presionó jump
+	if event.is_action_pressed("jump"):
+		character.jump_buffer_counter = character.JUMP_BUFFER_TIME
+		
+		# COYOTE TIME: Permitir saltar si el coyote time está activo
+		if character.coyote_time_counter > 0:
+			return jump_state
+	
 	return null
 
 func process_physics(delta: float) -> State:
@@ -26,8 +34,14 @@ func process_physics(delta: float) -> State:
 		if direction != 0 and sign(direction) == -sign(wall_normal.x):
 			return wall_jump_state
 	
-	# Si toca el suelo, cambiar a idle o walk según el input
+	# Si toca el suelo
 	if character.is_on_floor():
+		# JUMP BUFFER: Si hay un salto en buffer, ejecutarlo automáticamente
+		if character.jump_buffer_counter > 0:
+			character.jump_buffer_counter = 0  # Resetear el buffer
+			return jump_state
+		
+		# Si no hay jump buffer, ir a idle o walk según el input
 		var direction = Input.get_axis("left", "right")
 		if direction != 0:
 			return walk_state

@@ -12,11 +12,18 @@ func enter():
 	# Aplicar velocidad de salto al entrar en el estado
 	character.velocity.y = character.JUMP_VELOCITY
 	
+	# Resetear coyote time al saltar (no puede usar coyote time si saltó intencionalmente)
+	character.coyote_time_counter = 0
+	
 	# Reproducir animación de salto
 	if character.anim:
 		character.anim.play("jump")
 
 func process_input(event: InputEvent) -> State:
+	# JUMP BUFFER: Permitir activar buffer mientras está en el aire
+	if event.is_action_pressed("jump"):
+		character.jump_buffer_counter = character.JUMP_BUFFER_TIME
+	
 	return null
 
 func process_physics(delta: float) -> State:
