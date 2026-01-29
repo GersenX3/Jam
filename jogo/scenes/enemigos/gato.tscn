@@ -3,7 +3,10 @@
 [ext_resource type="Script" uid="uid://lb752y8ff0sc" path="res://scripts/enemies/gato/gato.gd" id="1_6yqx1"]
 [ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_rite1"]
 [ext_resource type="Texture2D" uid="uid://c72t6a6xagun" path="res://assets/sprites/personajes/chanel_silueta.png" id="2_6nxss"]
+[ext_resource type="Script" uid="uid://bq44xfly3ngk1" path="res://scripts/enemies/gato/idle.gd" id="3_8l68s"]
 [ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_mnwqe"]
+[ext_resource type="Script" uid="uid://pkfdwqg5jyt" path="res://scripts/enemies/gato/chasing.gd" id="4_w7dfc"]
+[ext_resource type="Script" uid="uid://c0yxm3626x8sk" path="res://scripts/enemies/gato/attack.gd" id="5_txoou"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnwqe"]
 atlas = ExtResource("2_6nxss")
@@ -30,21 +33,35 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 gradient = SubResource("Gradient_mnwqe")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6yqx1"]
-size = Vector2(12, 37)
+size = Vector2(42, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txoou"]
+size = Vector2(188, 34)
 
 [node name="Gato" type="CharacterBody2D" unique_id=1806925153]
+collision_layer = 4
 script = ExtResource("1_6yqx1")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1752182130]
+[node name="StateMachine" type="Node" parent="." unique_id=1752182130 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_rite1")
+initial_state = NodePath("Idle")
 debug = true
 metadata/_custom_type_script = "uid://rhcrrevrdn0u"
 
-[node name="Idle" type="Node" parent="StateMachine" unique_id=1671961783]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1671961783 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("3_8l68s")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
-[node name="Chasing" type="Node" parent="StateMachine" unique_id=1612253596]
+[node name="Chasing" type="Node" parent="StateMachine" unique_id=1612253596 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("4_w7dfc")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
-[node name="Attack" type="Node" parent="StateMachine" unique_id=1525811221]
+[node name="Attack" type="Node" parent="StateMachine" unique_id=1525811221 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("5_txoou")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1066473519]
 sprite_frames = SubResource("SpriteFrames_rite1")
@@ -55,6 +72,8 @@ shape = SubResource("RectangleShape2D_rite1")
 
 [node name="AreaDaño" type="Area2D" parent="." unique_id=757344349]
 position = Vector2(0, 11)
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("3_mnwqe")
 
 [node name="Sprite2D" type="Sprite2D" parent="AreaDaño" unique_id=1705994890]
@@ -66,5 +85,11 @@ texture = SubResource("GradientTexture2D_x5qnl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=2081228121]
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_6yqx1")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1838515300]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=206404464]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_txoou")
 
 [connection signal="body_entered" from="AreaDaño" to="AreaDaño" method="_on_body_entered"]
