@@ -8,7 +8,7 @@ extends CharacterBody2D
 # VARIABLES CONFIGURABLES
 # ============================================================================
 @export_group("Movement")
-@export var stalking_speed: float = 80.0  # Velocidad al perseguir (más lenta que el jugador)
+@export var stalking_speed: float = 200.0  # Velocidad al perseguir (más lenta que el jugador)
 @export var idle_speed: float = 30.0      # Velocidad al patrullar
 
 @export_group("Detection")
@@ -51,6 +51,8 @@ func _ready() -> void:
 		detection_area.body_exited.connect(_on_detection_area_exited)
 
 func _physics_process(delta: float) -> void:
+	# Aplicar gravedad
+	self.velocity.y += self.get_gravity().y * delta
 	# Actualizar cooldowns de estados
 	for child in state_machine.get_children():
 		if child is State:

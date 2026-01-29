@@ -7,14 +7,16 @@
 # - Si el jugador salió del rango → IdleState
 # ==============================================================================
 extends State
+@onready var area_daño: Area2D = $"../../AreaDaño"
 
-@export var attack_duration: float = 0.3
+@export var attack_duration: float = 2
 
 var attack_timer: float = 0.0
 var has_dealt_damage: bool = false
 
 func enter() -> void:
 	super.enter()
+	area_daño.set_collision_mask_value(2, false)
 	print("Gato: Estado ATTACK")
 	character.anim.play("attack")
 	character.velocity.x = 0
@@ -22,6 +24,7 @@ func enter() -> void:
 	has_dealt_damage = false
 
 func exit() -> void:
+	area_daño.set_collision_mask_value(2, true)
 	has_dealt_damage = false
 
 func process_physics(delta: float) -> State:

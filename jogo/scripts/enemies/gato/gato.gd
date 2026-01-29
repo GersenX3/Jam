@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var detection_area: Area2D = $DetectionArea
 @onready var state_machine: StateMachine = $StateMachine
 
-const SPEED = 300.0
+const SPEED = 250.0
 const GRAVITY = 980.0
 
 var LIFE = 1

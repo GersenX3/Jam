@@ -40,6 +40,7 @@ size = Vector2(188, 34)
 
 [node name="Gato" type="CharacterBody2D" unique_id=1806925153]
 collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_6yqx1")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1752182130 node_paths=PackedStringArray("initial_state")]

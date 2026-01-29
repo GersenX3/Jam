@@ -32,13 +32,15 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bnnia"]
 gradient = SubResource("Gradient_e8wud")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gudp"]
-size = Vector2(12, 21)
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8wud"]
+radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bulk4"]
 radius = 48.0
 
 [node name="Conejo" type="CharacterBody2D" unique_id=420172597]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_mxgbe")
 detection_range = 50.0
 
@@ -83,8 +85,8 @@ scale = Vector2(0.31249997, 0.31249997)
 texture = SubResource("GradientTexture2D_bnnia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=331929128]
-position = Vector2(0, -13.5)
-shape = SubResource("RectangleShape2D_5gudp")
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_e8wud")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=1834153281]
 

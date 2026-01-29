@@ -3,7 +3,11 @@
 [ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_0ys58"]
 [ext_resource type="Script" uid="uid://cbxte7dv3602o" path="res://scripts/enemies/buho/buho.gd" id="1_a744m"]
 [ext_resource type="Texture2D" uid="uid://cjmwhgmcflqu8" path="res://assets/sprites/miselaneos/dibujos.png" id="2_0ys58"]
+[ext_resource type="Script" uid="uid://cjepqhe2xxp35" path="res://scripts/enemies/buho/perched.gd" id="3_fo3ww"]
 [ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_ihbn3"]
+[ext_resource type="Script" uid="uid://bjxfyr88ogwc1" path="res://scripts/enemies/buho/diving.gd" id="4_fo3ww"]
+[ext_resource type="Script" uid="uid://b3qqlxsj2t1w4" path="res://scripts/enemies/buho/returning.gd" id="5_56thj"]
+[ext_resource type="Script" uid="uid://dmvsmhk7r4pqb" path="res://scripts/enemies/buho/stunned.gd" id="6_khup8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a744m"]
 atlas = ExtResource("2_0ys58")
@@ -30,17 +34,41 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 gradient = SubResource("Gradient_khup8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0t0tg"]
-size = Vector2(12, 19)
+size = Vector2(12, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_khup8"]
+radius = 69.00725
 
 [node name="Buho" type="CharacterBody2D" unique_id=1588957888]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_a744m")
 
-[node name="StateMachine" type="Node" parent="." unique_id=1871116374]
+[node name="StateMachine" type="Node" parent="." unique_id=1871116374 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_0ys58")
+initial_state = NodePath("Perched")
 debug = true
 metadata/_custom_type_script = "uid://rhcrrevrdn0u"
 
-[node name="Node" type="Node" parent="StateMachine" unique_id=712812212]
+[node name="Perched" type="Node" parent="StateMachine" unique_id=712812212 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("3_fo3ww")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Diving" type="Node" parent="StateMachine" unique_id=1085480192 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("4_fo3ww")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Returning" type="Node" parent="StateMachine" unique_id=801116906 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("5_56thj")
+character = NodePath("../..")
+state_machine = NodePath("..")
+
+[node name="Stunned" type="Node" parent="StateMachine" unique_id=1943272614 node_paths=PackedStringArray("character", "state_machine")]
+script = ExtResource("6_khup8")
+character = NodePath("../..")
+state_machine = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=877703464]
 sprite_frames = SubResource("SpriteFrames_fo3ww")
@@ -49,18 +77,27 @@ sprite_frames = SubResource("SpriteFrames_fo3ww")
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_56thj")
 
-[node name="AreaDaño" type="Area2D" parent="." unique_id=1792556919]
+[node name="DamageArea" type="Area2D" parent="." unique_id=1792556919]
 position = Vector2(0, 11)
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("3_ihbn3")
 
-[node name="Sprite2D" type="Sprite2D" parent="AreaDaño" unique_id=717848020]
+[node name="Sprite2D" type="Sprite2D" parent="DamageArea" unique_id=717848020]
 visible = false
 position = Vector2(9.536743e-07, -9.536743e-07)
 scale = Vector2(0.31249997, 0.31249997)
 texture = SubResource("GradientTexture2D_pcgmd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=437526758]
-position = Vector2(0, -12.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=437526758]
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_0t0tg")
 
-[connection signal="body_entered" from="AreaDaño" to="AreaDaño" method="_on_body_entered"]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1395356771]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=1921943244]
+shape = SubResource("CircleShape2D_khup8")
+
+[connection signal="body_entered" from="DamageArea" to="DamageArea" method="_on_body_entered"]
