@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dtt0au60w10mr"]
+
+[ext_resource type="Texture2D" uid="uid://b82b00qwj77cu" path="res://assets/tiles/jam.png" id="1_g2cyc"]
+[ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="2_3hmpi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m7ec"]
+atlas = ExtResource("1_g2cyc")
+region = Rect2(240, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hmpi"]
+atlas = ExtResource("1_g2cyc")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilasi"]
+atlas = ExtResource("1_g2cyc")
+region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nnqb"]
+atlas = ExtResource("1_g2cyc")
+region = Rect2(160, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4m7ec"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m7ec")
+}],
+"loop": true,
+"name": &"Azul",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hmpi")
+}],
+"loop": true,
+"name": &"Morado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilasi")
+}],
+"loop": true,
+"name": &"Naranja",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nnqb")
+}],
+"loop": true,
+"name": &"Rojo",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2cyc"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m7ec"]
+size = Vector2(16, 2)
+
+[node name="Caja" type="RigidBody2D" unique_id=1917246173]
+gravity_scale = 2.0
+lock_rotation = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1725012921]
+sprite_frames = SubResource("SpriteFrames_4m7ec")
+animation = &"Rojo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786490144]
+shape = SubResource("RectangleShape2D_g2cyc")
+
+[node name="AreaDaño" type="Area2D" parent="." unique_id=757344349]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_3hmpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=2081228121]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_4m7ec")
+
+[connection signal="body_entered" from="AreaDaño" to="AreaDaño" method="_on_body_entered"]

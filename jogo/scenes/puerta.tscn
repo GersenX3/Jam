@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dsjwqow3yivh1"]
+
+[ext_resource type="Texture2D" uid="uid://cxsmcgpepjk11" path="res://assets/sprites/miselaneos/puerta.png" id="1_1b3uk"]
+[ext_resource type="Script" uid="uid://baob8tabhb5x3" path="res://scripts/puerta.gd" id="1_gjhiy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1b3uk"]
+size = Vector2(16, 32)
+
+[node name="Puerta" type="Area2D" unique_id=712812224]
+script = ExtResource("1_gjhiy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2003321549]
+texture = ExtResource("1_1b3uk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=391973257]
+shape = SubResource("RectangleShape2D_1b3uk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -800.0
+const push_force = 80
 var LIFE = 100
 var last_move
 
@@ -35,6 +36,13 @@ func _process(delta: float) -> void:
 	# Decrementar el timer de jump buffer
 	if jump_buffer_counter > 0:
 		jump_buffer_counter -= delta
+
+func _physics_process(delta: float) -> void:
+	# after calling move_and_slide()
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		if c.get_collider() is RigidBody2D:
+			c.get_collider().apply_central_impulse(-c.get_normal() * push_force)
 
 func hazard():
 	LIFE = LIFE - 40

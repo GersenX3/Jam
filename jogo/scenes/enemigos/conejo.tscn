@@ -2,35 +2,138 @@
 
 [ext_resource type="Script" uid="uid://pbwuwfjuneo8" path="res://scripts/enemies/conejo/conejo.gd" id="1_mxgbe"]
 [ext_resource type="Script" uid="uid://rhcrrevrdn0u" path="res://scripts/state_machine/StateMachine.gd" id="1_tsu3j"]
-[ext_resource type="Texture2D" uid="uid://cjmwhgmcflqu8" path="res://assets/sprites/miselaneos/dibujos.png" id="2_tsu3j"]
 [ext_resource type="Script" uid="uid://dcpu3abpvwxjw" path="res://scripts/enemies/conejo/idle.gd" id="3_32o2u"]
 [ext_resource type="Script" uid="uid://4tg8akyyu4oe" path="res://scripts/area_daño.gd" id="3_bfc7y"]
 [ext_resource type="Script" uid="uid://dwr7va5v4fvsi" path="res://scripts/enemies/conejo/hidden.gd" id="4_32o2u"]
 [ext_resource type="Script" uid="uid://doxys7aooi68i" path="res://scripts/enemies/conejo/stalking.gd" id="5_bulk4"]
+[ext_resource type="Texture2D" uid="uid://cs3kfwovj75qr" path="res://assets/sprites/personajes/conejo_idle.png" id="6_bulk4"]
+[ext_resource type="Texture2D" uid="uid://cr16mu2ccjo0a" path="res://assets/sprites/personajes/conejo_parandose.png" id="6_e8wud"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxgbe"]
-atlas = ExtResource("2_tsu3j")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gudp"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(0, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm6xq"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(20, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kn3rv"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(40, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08j06"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(60, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxpoa"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(80, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltqhc"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(100, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7h86"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(120, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhn60"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(140, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qnos"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(160, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg1r0"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(180, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofa2l"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(200, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsm62"]
+atlas = ExtResource("6_e8wud")
+region = Rect2(220, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8wud"]
+atlas = ExtResource("6_bulk4")
+region = Rect2(0, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnnia"]
+atlas = ExtResource("6_bulk4")
+region = Rect2(20, 0, 20, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg07l"]
+atlas = ExtResource("6_bulk4")
+region = Rect2(0, 0, 20, 38)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_32o2u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mxgbe")
+"texture": SubResource("AtlasTexture_5gudp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm6xq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kn3rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08j06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxpoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltqhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7h86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhn60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qnos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg1r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofa2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsm62")
+}],
+"loop": false,
+"name": &"hidden",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8wud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnnia")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mg07l")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bulk4"]
 size = Vector2(10, 20)
-
-[sub_resource type="Gradient" id="Gradient_e8wud"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bnnia"]
-gradient = SubResource("Gradient_e8wud")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8wud"]
 radius = 3.0
@@ -47,7 +150,6 @@ detection_range = 50.0
 [node name="StateMachine" type="Node" parent="." unique_id=1154120560 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_tsu3j")
 initial_state = NodePath("Idle")
-debug = true
 metadata/_custom_type_script = "uid://rhcrrevrdn0u"
 
 [node name="Idle" type="Node" parent="StateMachine" unique_id=789657150 node_paths=PackedStringArray("character", "state_machine")]
@@ -66,7 +168,9 @@ character = NodePath("../..")
 state_machine = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1264808125]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_32o2u")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=857221726]
 position = Vector2(0, -2)
@@ -77,12 +181,6 @@ position = Vector2(0, 11)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("3_bfc7y")
-
-[node name="Sprite2D" type="Sprite2D" parent="AreaDaño" unique_id=2143048015]
-visible = false
-position = Vector2(9.536743e-07, -9.536743e-07)
-scale = Vector2(0.31249997, 0.31249997)
-texture = SubResource("GradientTexture2D_bnnia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=331929128]
 position = Vector2(0, -11)

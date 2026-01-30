@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnyrqvdnuw4l2"]
+[gd_scene format=3 uid="uid://bnyrqvdnuw4l2"]
 
 [ext_resource type="Script" uid="uid://br3d5w816c4px" path="res://addons/event_bus_plugin/EventBusInGameOverview.gd" id="1_tuyuc"]
 [ext_resource type="Script" uid="uid://dw251dx64pcdw" path="res://addons/event_bus_plugin/drag_panel.gd" id="2_1x4qa"]
@@ -19,11 +19,12 @@ corner_radius_bottom_left = 5
 content_margin_left = 5.0
 content_margin_bottom = 5.0
 
-[node name="EventBusInGameOverview" type="CanvasLayer"]
+[node name="EventBusInGameOverview" type="CanvasLayer" unique_id=736713988]
 layer = 20
+visible = false
 script = ExtResource("1_tuyuc")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=659552106]
 custom_minimum_size = Vector2(450, 350)
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,7 +38,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_j3ar6")
 script = ExtResource("2_1x4qa")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1356483627]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,24 +46,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer" unique_id=1320703476]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vwb3j")
 follow_focus = true
 vertical_scroll_mode = 2
 
-[node name="ContentContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+[node name="ContentContainer" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer" unique_id=241318633]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 5
 
-[node name="CloseButton" type="Button" parent="Panel/VBoxContainer"]
+[node name="CloseButton" type="Button" parent="Panel/VBoxContainer" unique_id=433190604]
 layout_mode = 2
 text = "Close"
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1735627018]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

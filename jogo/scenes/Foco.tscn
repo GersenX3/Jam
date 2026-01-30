@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bjqh7dyu8xhqs"]
+
+[ext_resource type="Texture2D" uid="uid://wvh0lqx3ewlg" path="res://assets/gradiente_blanco.png" id="1_rt6wd"]
+
+[node name="Foco" type="PointLight2D" unique_id=1202808869]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_rt6wd")

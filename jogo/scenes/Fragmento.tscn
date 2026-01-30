@@ -5,17 +5,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_errlg"]
 size = Vector2(21.33334, 21.33334)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_errlg"]
-size = Vector2(10, 10)
-
 [node name="Area2D" type="Area2D" unique_id=135955704]
+collision_mask = 3
 script = ExtResource("1_voh08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=876472793]
 shape = SubResource("RectangleShape2D_errlg")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1123685507]
-scale = Vector2(2.1333325, 2.1333334)
-texture = SubResource("PlaceholderTexture2D_errlg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

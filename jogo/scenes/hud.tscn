@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bevd1fbikb8h2"]
 
 [ext_resource type="Script" uid="uid://dsdhi3x0a38m5" path="res://scripts/hud.gd" id="1_ahhtf"]
+[ext_resource type="FontFile" uid="uid://c18d58cxjxn71" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://6tu0sfkpyspf" path="res://assets/sprites/botonPAUSA.png" id="3_5ysmq"]
 
 [node name="Hud" type="CanvasLayer" unique_id=416811106]
 script = ExtResource("1_ahhtf")
@@ -13,7 +15,19 @@ offset_bottom = 40.0
 
 [node name="LabelVida" type="Label" parent="Control" unique_id=81371490]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 203.0
+offset_top = 159.0
+offset_right = 263.0
+offset_bottom = 182.0
 scale = Vector2(6, 6)
+theme_override_fonts/font = ExtResource("2_oo0fn")
 text = "Vida"
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=375961611]
+visible = false
+offset_left = 1723.0
+offset_top = 141.0
+offset_right = 1739.0
+offset_bottom = 157.0
+scale = Vector2(7, 7)
+texture_normal = ExtResource("3_5ysmq")
