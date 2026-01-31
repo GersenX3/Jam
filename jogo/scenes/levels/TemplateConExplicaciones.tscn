@@ -1,0 +1,209 @@
+[gd_scene format=4 uid="uid://dmqk45e5pyj08"]
+
+[ext_resource type="PackedScene" uid="uid://dsjwqow3yivh1" path="res://scenes/puerta.tscn" id="1_fqmng"]
+[ext_resource type="FontFile" uid="uid://c18d58cxjxn71" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_pwkq0"]
+[ext_resource type="PackedScene" uid="uid://w4pxaa6n0pia" path="res://scenes/area_vida.tscn" id="2_oknvn"]
+[ext_resource type="PackedScene" uid="uid://d2fygxsy8doha" path="res://scenes/jugador/jugador.tscn" id="2_pwkq0"]
+[ext_resource type="PackedScene" uid="uid://di8l1bi7o0pmd" path="res://scenes/tiles.tscn" id="3_hlclg"]
+[ext_resource type="PackedScene" uid="uid://dtt0au60w10mr" path="res://scenes/caja.tscn" id="3_j8ay1"]
+[ext_resource type="PackedScene" uid="uid://bjqh7dyu8xhqs" path="res://scenes/Foco.tscn" id="4_klwut"]
+[ext_resource type="Script" uid="uid://4ywvvdgq0rmr" path="res://scripts/desactivador_colisiones.gd" id="4_oknvn"]
+[ext_resource type="PackedScene" uid="uid://c1q1r8oxr1r3r" path="res://scenes/PostProcesado.tscn" id="5_j8ay1"]
+[ext_resource type="PackedScene" uid="uid://b26tyke5b2ajl" path="res://scenes/enemigos/buho.tscn" id="6_dgmhb"]
+[ext_resource type="PackedScene" uid="uid://qtll1wnn7eye" path="res://scenes/area_daño.tscn" id="6_hlclg"]
+[ext_resource type="PackedScene" uid="uid://d2c2u152b0iqn" path="res://scenes/enemigos/conejo.tscn" id="7_fpnik"]
+[ext_resource type="PackedScene" uid="uid://dwxebappl5o2j" path="res://scenes/enemigos/gato.tscn" id="8_nhuv5"]
+[ext_resource type="PackedScene" uid="uid://dtpgnj8l67dpx" path="res://scenes/enemigos/pajaro.tscn" id="9_gq6hd"]
+[ext_resource type="PackedScene" uid="uid://dlxuk02e8488y" path="res://scenes/Fragmento.tscn" id="10_28dgu"]
+[ext_resource type="Texture2D" uid="uid://d1rrgkko03ef6" path="res://assets/sprites/miselaneos/fragmento_morado.png" id="11_nhuv5"]
+[ext_resource type="Script" uid="uid://kfq7ehvdx4u3" path="res://scripts/wavy_node.gd" id="12_gq6hd"]
+
+[node name="Template" type="Node2D" unique_id=1481623527]
+scale = Vector2(6, 6)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1072949642]
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Node2D" unique_id=614487097]
+z_index = 100
+offset_left = 50.66667
+offset_top = -146.66667
+offset_right = 148.66667
+offset_bottom = -123.66667
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "Ola arriba
+Arriba de cada
+cosa que pienso importante
+te dejo una descripcion"
+
+[node name="Label2" type="Label" parent="Node2D" unique_id=1532255094]
+z_index = 100
+offset_left = 468.0
+offset_top = -156.0
+offset_right = 1780.0
+offset_bottom = -83.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "La puerta, es el final de tu nivel
+Para usarla en tu escena solo declarale el path de la siguiente escena.
+Si dejas varias confundes al jugador 
+y puede crear tension si lo sabes aplicar, creo jsjs lol
+"
+
+[node name="Label3" type="Label" parent="Node2D" unique_id=471461382]
+z_index = 100
+offset_left = 750.6666
+offset_top = -77.33334
+offset_right = 2062.6665
+offset_bottom = 14.6666565
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "Esta es un area de daño, mata a todo, tu jugador y los enemigos
+Cambiale el Sprite por unas espinas y la puedes usar w"
+
+[node name="Label4" type="Label" parent="Node2D" unique_id=2122550335]
+z_index = 100
+offset_left = 1026.6665
+offset_top = -142.66666
+offset_right = 2338.6665
+offset_bottom = -50.666656
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "Esta es un area de vida, hace que 
+aumente en tu jugador, si un enemigo la agarra tambien le aumenta la vida
+pero igual si tu enemigo o tu tienen demasiada vida mueren espontaneamente "
+
+[node name="Label5" type="Label" parent="Node2D" unique_id=2141975010]
+z_index = 100
+offset_left = 1329.3334
+offset_top = -118.66667
+offset_right = 2641.3335
+offset_bottom = -26.666672
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "Esta es una caja, la puedes empujar, y si la empujas para que le caiga a un enemigo encima
+lo mata, deberia funcionar con todos."
+
+[node name="Label6" type="Label" parent="Node2D" unique_id=1639008875]
+z_index = 100
+offset_left = 1706.6666
+offset_top = -70.666664
+offset_right = 3018.6667
+offset_bottom = 21.333336
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "Aqui hay un foco, si no tiene nada atras, no ilumina nada"
+
+[node name="Label7" type="Label" parent="Node2D" unique_id=758661918]
+z_index = 100
+offset_left = 1935.9999
+offset_top = -157.33333
+offset_right = 3248.0
+offset_bottom = -65.33333
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "Esta escena es un fragmento de la mascara.
+Yo revisaria el nivel 7.
+Puedes copiar el nodo y pegarlo en otro nivel.
+Solo asignale otro sprite de la mascara."
+
+[node name="Label8" type="Label" parent="Node2D" unique_id=1455546033]
+z_index = 100
+offset_left = 2353.3335
+offset_top = -63.999992
+offset_right = 3665.3335
+offset_bottom = 28.000008
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("1_pwkq0")
+text = "Aqui estan todos los enemigos, solo dejales tus animaciones a sus escenas y prueba a crear niveles con ellos.
+Juega a mario maker.
+"
+
+[node name="Areavida" parent="Node2D" unique_id=757344349 instance=ExtResource("2_oknvn")]
+position = Vector2(1173.3333, -96.00001)
+
+[node name="Caja" parent="Node2D" unique_id=1917246173 instance=ExtResource("3_j8ay1")]
+position = Vector2(1484, -85.333336)
+
+[node name="Foco" parent="Node2D" unique_id=1202808869 instance=ExtResource("4_klwut")]
+position = Vector2(1769.3334, -112.00001)
+
+[node name="Gris" type="Node2D" parent="." unique_id=337008485]
+
+[node name="Visuales" type="Node2D" parent="Gris" unique_id=694693814]
+
+[node name="Objetos" type="Node2D" parent="Gris" unique_id=2092526363]
+
+[node name="Enemigos" type="Node2D" parent="Gris" unique_id=2078312871]
+
+[node name="Ladrillo" parent="Gris" unique_id=936889590 instance=ExtResource("3_hlclg")]
+z_index = -10
+tile_map_data = PackedByteArray()
+
+[node name="Fondo" parent="Gris" unique_id=1851890542 instance=ExtResource("3_hlclg")]
+z_index = -9
+tile_map_data = PackedByteArray()
+
+[node name="Terreno" parent="Gris" unique_id=455723006 instance=ExtResource("3_hlclg")]
+tile_map_data = PackedByteArray("AAATAP//AAACABcAAAASAP//AAACABcAAAARAP//AAACABcAAAAQAP//AAACABcAAAAPAP//AAACABcAAAAOAP//AAACABcAAAANAP//AAACABcAAAAMAP//AAACABcAAAALAP//AAACABcAAAAKAP//AAACABcAAAAJAP//AAACABcAAAAIAP//AAACABcAAAAHAP//AAACABcAAAAGAP//AAACABcAAAAFAP//AAACABcAAAAEAP//AAACABcAAAADAP//AAACABcAAAACAP//AAACABcAAAABAP//AAABABcAAAAjAP//AAACABcAAAAiAP//AAACABcAAAAhAP//AAACABcAAAAgAP//AAACABcAAAAfAP//AAACABcAAAAeAP//AAACABcAAAAdAP//AAACABcAAAAcAP//AAACABcAAAAbAP//AAACABcAAAAaAP//AAACABcAAAAZAP//AAACABcAAAAYAP//AAACABcAAAAXAP//AAACABcAAAAWAP//AAACABcAAAAVAP//AAACABcAAAAUAP//AAACABcAAAAuAP//AAACABcAAAAtAP//AAACABcAAAAsAP//AAACABcAAAArAP//AAACABcAAAAqAP//AAACABcAAAApAP//AAACABcAAAAoAP//AAACABcAAAAnAP//AAACABcAAAAmAP//AAACABcAAAAlAP//AAACABcAAAAkAP//AAACABcAAAA9AP//AAACABcAAAA8AP//AAACABcAAAA7AP//AAACABcAAAA6AP//AAACABcAAAA5AP//AAACABcAAAA4AP//AAACABcAAAA3AP//AAACABcAAAA2AP//AAACABcAAAA1AP//AAACABcAAAA0AP//AAACABcAAAAzAP//AAACABcAAAAyAP//AAACABcAAAAxAP//AAACABcAAAAwAP//AAACABcAAAAvAP//AAACABcAAABNAP//AAACABcAAABMAP//AAACABcAAABLAP//AAACABcAAABKAP//AAACABcAAABJAP//AAACABcAAABIAP//AAACABcAAABHAP//AAACABcAAABGAP//AAACABcAAABFAP//AAACABcAAABEAP//AAACABcAAABDAP//AAACABcAAABCAP//AAACABcAAABBAP//AAACABcAAABAAP//AAACABcAAAA/AP//AAACABcAAAA+AP//AAACABcAAABYAf//AAADABcAAABXAf//AAACABcAAABWAf//AAACABcAAABVAf//AAACABcAAABUAf//AAACABcAAABTAf//AAACABcAAABSAf//AAACABcAAABRAf//AAACABcAAABQAf//AAACABcAAABPAf//AAACABcAAABOAf//AAACABcAAABNAf//AAACABcAAABMAf//AAACABcAAABLAf//AAACABcAAABKAf//AAACABcAAABJAf//AAACABcAAABIAf//AAACABcAAABHAf//AAACABcAAABGAf//AAACABcAAABFAf//AAACABcAAABEAf//AAACABcAAABDAf//AAACABcAAABCAf//AAACABcAAABBAf//AAACABcAAABAAf//AAACABcAAAA/Af//AAACABcAAAA+Af//AAACABcAAAA9Af//AAACABcAAAA8Af//AAACABcAAAA7Af//AAACABcAAAA6Af//AAACABcAAAA5Af//AAACABcAAAA4Af//AAACABcAAAA3Af//AAACABcAAAA2Af//AAACABcAAAA1Af//AAACABcAAAA0Af//AAACABcAAAAzAf//AAACABcAAAAyAf//AAACABcAAAAxAf//AAACABcAAAAwAf//AAACABcAAAAvAf//AAACABcAAAAuAf//AAACABcAAAAtAf//AAACABcAAAAsAf//AAACABcAAAArAf//AAACABcAAAAqAf//AAACABcAAAApAf//AAACABcAAAAoAf//AAACABcAAAAnAf//AAACABcAAAAmAf//AAACABcAAAAlAf//AAACABcAAAAkAf//AAACABcAAAAjAf//AAACABcAAAAiAf//AAACABcAAAAhAf//AAACABcAAAAgAf//AAACABcAAAAfAf//AAACABcAAAAeAf//AAACABcAAAAdAf//AAACABcAAAAcAf//AAACABcAAAAbAf//AAACABcAAAAaAf//AAACABcAAAAZAf//AAACABcAAAAYAf//AAACABcAAAAXAf//AAACABcAAAAWAf//AAACABcAAAAVAf//AAACABcAAAAUAf//AAACABcAAAATAf//AAACABcAAAASAf//AAACABcAAAARAf//AAACABcAAAAQAf//AAACABcAAAAPAf//AAACABcAAAAOAf//AAACABcAAAANAf//AAACABcAAAAMAf//AAACABcAAAALAf//AAACABcAAAAKAf//AAACABcAAAAJAf//AAACABcAAAAIAf//AAACABcAAAAHAf//AAACABcAAAAGAf//AAACABcAAAAFAf//AAACABcAAAAEAf//AAACABcAAAADAf//AAACABcAAAACAf//AAACABcAAAABAf//AAACABcAAAAAAf//AAACABcAAAD/AP//AAACABcAAAD+AP//AAACABcAAAD9AP//AAACABcAAAD8AP//AAACABcAAAD7AP//AAACABcAAAD6AP//AAACABcAAAD5AP//AAACABcAAAD4AP//AAACABcAAAD3AP//AAACABcAAAD2AP//AAACABcAAAD1AP//AAACABcAAAD0AP//AAACABcAAADzAP//AAACABcAAADyAP//AAACABcAAADxAP//AAACABcAAADwAP//AAACABcAAADvAP//AAACABcAAADuAP//AAACABcAAADtAP//AAACABcAAADsAP//AAACABcAAADrAP//AAACABcAAADqAP//AAACABcAAADpAP//AAACABcAAADoAP//AAACABcAAADnAP//AAACABcAAADmAP//AAACABcAAADlAP//AAACABcAAADkAP//AAACABcAAADjAP//AAACABcAAADiAP//AAACABcAAADhAP//AAACABcAAADgAP//AAACABcAAADfAP//AAACABcAAADeAP//AAACABcAAADdAP//AAACABcAAADcAP//AAACABcAAADbAP//AAACABcAAADaAP//AAACABcAAADZAP//AAACABcAAADYAP//AAACABcAAADXAP//AAACABcAAADWAP//AAACABcAAADVAP//AAACABcAAADUAP//AAACABcAAADTAP//AAACABcAAADSAP//AAACABcAAADRAP//AAACABcAAADQAP//AAACABcAAADPAP//AAACABcAAADOAP//AAACABcAAADNAP//AAACABcAAADMAP//AAACABcAAADLAP//AAACABcAAADKAP//AAACABcAAADJAP//AAACABcAAADIAP//AAACABcAAADHAP//AAACABcAAADGAP//AAACABcAAADFAP//AAACABcAAADEAP//AAACABcAAADDAP//AAACABcAAADCAP//AAACABcAAADBAP//AAACABcAAADAAP//AAACABcAAAC/AP//AAACABcAAAC+AP//AAACABcAAAC9AP//AAACABcAAAC8AP//AAACABcAAAC7AP//AAACABcAAAC6AP//AAACABcAAAC5AP//AAACABcAAAC4AP//AAACABcAAAC3AP//AAACABcAAAC2AP//AAACABcAAAC1AP//AAACABcAAAC0AP//AAACABcAAACzAP//AAACABcAAACyAP//AAACABcAAACxAP//AAACABcAAACwAP//AAACABcAAACvAP//AAACABcAAACuAP//AAACABcAAACtAP//AAACABcAAACsAP//AAACABcAAACrAP//AAACABcAAACqAP//AAACABcAAACpAP//AAACABcAAACoAP//AAACABcAAACnAP//AAACABcAAACmAP//AAACABcAAAClAP//AAACABcAAACkAP//AAACABcAAACjAP//AAACABcAAACiAP//AAACABcAAAChAP//AAACABcAAACgAP//AAACABcAAACfAP//AAACABcAAACeAP//AAACABcAAACdAP//AAACABcAAACcAP//AAACABcAAACbAP//AAACABcAAACaAP//AAACABcAAACZAP//AAACABcAAACYAP//AAACABcAAACXAP//AAACABcAAACWAP//AAACABcAAACVAP//AAACABcAAACUAP//AAACABcAAACTAP//AAACABcAAACSAP//AAACABcAAACRAP//AAACABcAAACQAP//AAACABcAAACPAP//AAACABcAAACOAP//AAACABcAAACNAP//AAACABcAAACMAP//AAACABcAAACLAP//AAACABcAAACKAP//AAACABcAAACJAP//AAACABcAAACIAP//AAACABcAAACHAP//AAACABcAAACGAP//AAACABcAAACFAP//AAACABcAAACEAP//AAACABcAAACDAP//AAACABcAAACCAP//AAACABcAAACBAP//AAACABcAAACAAP//AAACABcAAAB/AP//AAACABcAAAB+AP//AAACABcAAAB9AP//AAACABcAAAB8AP//AAACABcAAAB7AP//AAACABcAAAB6AP//AAACABcAAAB5AP//AAACABcAAAB4AP//AAACABcAAAB3AP//AAACABcAAAB2AP//AAACABcAAAB1AP//AAACABcAAAB0AP//AAACABcAAABzAP//AAACABcAAAByAP//AAACABcAAABxAP//AAACABcAAABwAP//AAACABcAAABvAP//AAACABcAAABuAP//AAACABcAAABtAP//AAACABcAAABsAP//AAACABcAAABrAP//AAACABcAAABqAP//AAACABcAAABpAP//AAACABcAAABoAP//AAACABcAAABnAP//AAACABcAAABmAP//AAACABcAAABlAP//AAACABcAAABkAP//AAACABcAAABjAP//AAACABcAAABiAP//AAACABcAAABhAP//AAACABcAAABgAP//AAACABcAAABfAP//AAACABcAAABeAP//AAACABcAAABdAP//AAACABcAAABcAP//AAACABcAAABbAP//AAACABcAAABaAP//AAACABcAAABZAP//AAACABcAAABYAP//AAACABcAAABXAP//AAACABcAAABWAP//AAACABcAAABVAP//AAACABcAAABUAP//AAACABcAAABTAP//AAACABcAAABSAP//AAACABcAAABRAP//AAACABcAAABQAP//AAACABcAAABPAP//AAACABcAAABOAP//AAACABcAAACdAPr/AAACABYAAACdAPb/AAACABQAAACcAPr/AAACABcAAACcAPb/AAACABcAAACbAPr/AAACABcAAACbAPb/AAACABcAAACaAPr/AAACABcAAACaAPb/AAACABcAAACZAPr/AAACABcAAACZAPb/AAACABcAAACYAPr/AAACABcAAACYAPb/AAACABcAAACXAPr/AAACABcAAACXAPb/AAACABcAAACWAPr/AAACABcAAACWAPb/AAACABcAAACVAPr/AAACABcAAACVAPb/AAACABcAAACUAPr/AAACABcAAACUAPb/AAACABcAAACTAPr/AAACABcAAACTAPb/AAACABcAAACSAPr/AAACABYAAACSAPb/AAACABQAAACRAPr/AAACABcAAACRAPb/AAACABcAAACQAPr/AAACABcAAACQAPb/AAACABcAAACPAPr/AAACABcAAACPAPb/AAACABcAAACOAPr/AAACABcAAACOAPb/AAACABcAAACNAPr/AAACABcAAACNAPb/AAACABcAAACMAPr/AAACABcAAACMAPb/AAACABcAAACLAPr/AAACABcAAACLAPb/AAACABcAAACKAPr/AAACABcAAACKAPb/AAACABcAAACJAPr/AAAGABcAAACJAPn/AAALABYAAACJAPj/AAALABYAAACJAPf/AAALABYAAACJAPb/AAAGABQAAACIAPr/AAAIABcAAACIAPn/AAAIABUAAACIAPj/AAAIABUAAACIAPf/AAAIABUAAACIAPb/AAAIABQAAACrAPr/AAACABcAAACrAPb/AAACABcAAACqAPr/AAACABcAAACqAPb/AAACABcAAACpAPr/AAACABcAAACpAPb/AAACABcAAACoAPr/AAACABcAAACoAPb/AAACABcAAACnAPr/AAACABcAAACnAPb/AAACABcAAACmAPr/AAACABcAAACmAPb/AAACABcAAAClAPr/AAACABcAAAClAPb/AAACABcAAACkAPr/AAACABcAAACkAPb/AAACABcAAACjAPr/AAACABcAAACjAPb/AAACABcAAACiAPr/AAACABcAAACiAPb/AAACABcAAAChAPr/AAACABcAAAChAPb/AAACABcAAACgAPr/AAACABcAAACgAPb/AAACABcAAACfAPr/AAACABcAAACfAPb/AAACABcAAACeAPr/AAACABcAAACeAPb/AAACABcAAAC5APr/AAALABcAAAC5APn/AAALABYAAAC5APj/AAALABYAAAC5APf/AAALABYAAAC5APb/AAALABQAAAC4APr/AAAFABcAAAC4APn/AAAIABUAAAC4APj/AAAIABUAAAC4APf/AAAIABUAAAC4APb/AAAFABQAAAC3APr/AAACABcAAAC3APb/AAACABcAAAC2APr/AAACABcAAAC2APb/AAACABcAAAC1APr/AAACABcAAAC1APb/AAACABcAAAC0APr/AAACABcAAAC0APb/AAACABcAAACzAPr/AAACABcAAACzAPb/AAACABcAAACyAPr/AAACABcAAACyAPb/AAACABcAAACxAPr/AAACABcAAACxAPb/AAACABcAAACwAPr/AAACABcAAACwAPb/AAACABcAAACvAPr/AAACABcAAACvAPb/AAACABcAAACuAPr/AAACABcAAACuAPb/AAACABcAAACtAPr/AAACABcAAACtAPb/AAACABcAAACsAPr/AAACABYAAACsAPb/AAACABQAAACSAPn/AAAAABUAAACSAPj/AAAAABUAAACSAPf/AAAAABUAAACdAPn/AAAAABUAAACdAPj/AAAAABUAAACdAPf/AAAAABUAAACsAPn/AAAAABUAAACsAPj/AAAAABUAAACsAPf/AAAAABUAAAA=")
+
+[node name="Buho" parent="Gris" unique_id=1588957888 instance=ExtResource("6_dgmhb")]
+position = Vector2(2269.3335, -109.333336)
+
+[node name="Conejo" parent="Gris" unique_id=420172597 instance=ExtResource("7_fpnik")]
+position = Vector2(2433.3335, -117.333336)
+
+[node name="Gato" parent="Gris" unique_id=1806925153 instance=ExtResource("8_nhuv5")]
+position = Vector2(2649.3333, -121.333336)
+
+[node name="Pajaro" parent="Gris" unique_id=1538421180 instance=ExtResource("9_gq6hd")]
+position = Vector2(2861.3335, -120.00001)
+
+[node name="Area2D" parent="Gris/Pajaro" unique_id=135955704 node_paths=PackedStringArray("nodo_desbloqueable", "nodo_destruible") instance=ExtResource("10_28dgu")]
+position = Vector2(-834.6667, 13.333343)
+nodo_desbloqueable = NodePath("")
+nodo_destruible = NodePath(".")
+path_cancion_nueva = "res://assets/music/Base+Conejo.wav"
+path_sonido_animal = "res://assets/sfx/conejo.wav"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Gris/Pajaro/Area2D" unique_id=1967115440]
+texture = ExtResource("11_nhuv5")
+script = ExtResource("12_gq6hd")
+
+[node name="Foco" parent="Gris/Pajaro/Area2D" unique_id=557548649 instance=ExtResource("4_klwut")]
+
+[node name="Cosas" type="Node2D" parent="." unique_id=561272342]
+
+[node name="Desbloqueable" type="Node2D" parent="Cosas" unique_id=188314882]
+script = ExtResource("4_oknvn")
+
+[node name="Visuales" type="Node2D" parent="Cosas/Desbloqueable" unique_id=1344914046]
+
+[node name="Terreno" parent="Cosas/Desbloqueable" unique_id=583145391 instance=ExtResource("3_hlclg")]
+tile_map_data = PackedByteArray()
+
+[node name="Ladrillo" parent="Cosas" unique_id=181506372 instance=ExtResource("3_hlclg")]
+z_index = -10
+tile_map_data = PackedByteArray()
+
+[node name="Fondo" parent="Cosas" unique_id=1114034295 instance=ExtResource("3_hlclg")]
+z_index = -9
+tile_map_data = PackedByteArray("AABsAPb/AAAGAAEAAABsAPf/AAAGAAEAAABsAPj/AAAGAAEAAABsAPn/AAAGAAEAAABsAPr/AAAGAAEAAABsAPv/AAAGAAEAAABsAPz/AAAGAAEAAABtAPb/AAAGAAEAAABtAPf/AAAGAAEAAABtAPj/AAAGAAEAAABtAPn/AAAGAAEAAABtAPr/AAAGAAEAAABtAPv/AAAGAAEAAABtAPz/AAAGAAEAAABuAPb/AAAGAAEAAABuAPf/AAAGAAEAAABuAPr/AAAGAAEAAABuAPv/AAAGAAEAAABuAPz/AAAGAAEAAABvAPb/AAAGAAEAAABvAPj/AAAGAAEAAABvAPn/AAAGAAEAAABvAPr/AAAGAAEAAABvAPv/AAAGAAEAAABvAPz/AAAGAAEAAABwAPb/AAAGAAEAAABwAPr/AAAGAAEAAABwAPv/AAAGAAEAAABwAPz/AAAGAAEAAABxAPb/AAAGAAEAAABxAPr/AAAGAAEAAABxAPv/AAAGAAEAAABxAPz/AAAGAAEAAABwAPf/AAAGAAEAAABwAPj/AAAGAAEAAABwAPn/AAAGAAEAAABxAPf/AAAGAAEAAABxAPj/AAAGAAEAAABxAPn/AAAGAAEAAAA=")
+
+[node name="Puerta2" parent="Cosas" unique_id=606789544 instance=ExtResource("1_fqmng")]
+position = Vector2(582.6667, -89.33333)
+path_escena = "res://scenes/levels/Level_7.tscn"
+
+[node name="Jugador" parent="Cosas" unique_id=307045768 instance=ExtResource("2_pwkq0")]
+position = Vector2(106.66667, -32)
+
+[node name="AreaDaño" parent="Cosas" unique_id=769428388 instance=ExtResource("6_hlclg")]
+position = Vector2(864, -96.00001)
+
+[node name="Fragmentos" type="Node2D" parent="." unique_id=432632812]
+
+[node name="PostProcesado" parent="." unique_id=1384551174 instance=ExtResource("5_j8ay1")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=652066212]
+color = Color(0.4045111, 0.40451115, 0.4045111, 1)
